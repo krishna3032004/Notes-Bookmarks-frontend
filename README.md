@@ -50,7 +50,7 @@ Users can **register, login, create notes, save bookmarks, mark favorites, and r
 
 ## 🔹 Demo
 
-- Frontend deployed on **Vercel**: `[Your Vercel Frontend URL]`
+- Frontend deployed on **Vercel**: `https://notes-bookmarks-frontend.vercel.app`
 - Backend deployed on **Render**: `https://notes-bookmarks-backend-uzya.onrender.com`
 
 ---
@@ -73,28 +73,28 @@ Users can **register, login, create notes, save bookmarks, mark favorites, and r
    JWT_SECRET=your_jwt_secret
    EMAIL_USER=your_email@gmail.com
    EMAIL_PASS=your_email_password_or_app_password
-```
+   ```
 4. Start server:
    ```bash
    npm start
    ```
-   The backend will run on http://localhost:5000.
+The backend will run on http://localhost:5000.
 
 ### 2. Frontend
 1. Clone frontend repo:
-```bash
-git clone https://github.com/krishna3032004/Notes-Bookmarks-frontend.git
-cd notes-bookmarks-frontend
-```
+   ```bash
+   git clone https://github.com/krishna3032004/Notes-Bookmarks-frontend.git
+   cd notes-bookmarks-frontend
+   ```
 2. Install dependencies:
-```bash
-npm install
-```
+   ```bash
+   npm install
+   ```
 3. Create a .env file with:
-```bash
-NEXT_PUBLIC_API_URL=http://localhost:5000/api
-```
+   ```bash
+   NEXT_PUBLIC_API_URL=http://localhost:5000/api
+   ```
 4. Run frontend locally:
-```bash
-npm run dev
-```
+   ```bash
+   npm run dev
+   ```
