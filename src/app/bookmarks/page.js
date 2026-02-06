@@ -7,6 +7,7 @@ import {
     createBookmark,
     updateBookmark,
     deleteBookmark,
+    fetchMetadata,
 } from "@/lib/api";
 import { requireAuth } from "@/lib/requireAuth";
 
@@ -85,17 +86,27 @@ export default function Bookmarks() {
                 typeof form.tags === "string"
                     ? form.tags.split(",").map((t) => t.trim())
                     : form.tags;
-            if (editingBookmark) {
-                await updateBookmark(editingBookmark._id, {
-                    ...form,
-                    tags,
-                });
-            } else {
-                await createBookmark({
-                    ...form,
-                    tags,
-                });
-            }
+            
+    let bookmarkData = { ...form, tags };
+
+    // ✅ Auto-fetch metadata if title or description is empty
+    if (!form.title || !form.description) {
+      try {
+        const meta = await fetchMetadata(form.url);
+        if (!form.title) bookmarkData.title = meta.title || form.url;
+        if (!form.description) bookmarkData.description = meta.description || "";
+      } catch (err) {
+        console.warn("Failed to fetch metadata:", err.message);
+        if (!form.title) bookmarkData.title = form.url; // fallback
+        if (!form.description) bookmarkData.description = "";
+      }
+    }
+
+    if (editingBookmark) {
+      await updateBookmark(editingBookmark._id, bookmarkData);
+    } else {
+      await createBookmark(bookmarkData);
+    }
             setShowModal(false);
             loadBookmarks(search, page);
         } catch (err) {

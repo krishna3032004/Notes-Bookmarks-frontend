@@ -156,3 +156,15 @@ export async function deleteBookmark(id) {
   return res.json();
 }
 
+
+
+export async function fetchMetadata(url) {
+  const res = await fetch(`${BASE_URL}/fetch-metadata`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json", ...(localStorage.getItem("token") && { Authorization: `Bearer ${localStorage.getItem("token")}` }) },
+    body: JSON.stringify({ url }),
+  });
+
+  if (!res.ok) throw new Error("Failed to fetch metadata");
+  return res.json(); // { title, description }
+}

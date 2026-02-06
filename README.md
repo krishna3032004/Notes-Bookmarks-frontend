@@ -17,7 +17,8 @@ Users can **register, login, create notes, save bookmarks, mark favorites, and r
   - Mark notes as **favorites**  
   - Pagination and search  
 - **Bookmarks Management**
-  - Add bookmarks via URL   
+  - Add bookmarks via URL 
+  - Auto-fetch **title** and **description** from the URL  
   - Edit, delete, mark as favorite  
   - Pagination and search  
 
