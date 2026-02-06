@@ -1,36 +1,100 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Notes & Bookmarks Manager (NBM)
 
-## Getting Started
+A modern, responsive web application to manage **notes** and **bookmarks** efficiently.  
+Built with **Next.js (App Router)**, **Node.js**, **MongoDB**, and **Tailwind CSS**.  
 
-First, run the development server:
+Users can **register, login, create notes, save bookmarks, mark favorites, and reset passwords via OTP**. Fully responsive dark theme with smooth animations.
 
+---
+
+## 🌟 Features
+
+### Core Features
+- **User Authentication** using JWT  
+- **Notes Management**
+  - Create, edit, delete notes  
+  - Add **tags** (comma-separated)  
+  - Mark notes as **favorites**  
+  - Pagination and search  
+- **Bookmarks Management**
+  - Add bookmarks via URL   
+  - Edit, delete, mark as favorite  
+  - Pagination and search  
+
+### Bonus Features
+- **Register & Login via email OTP verification**  
+- **Forgot Password** with email OTP  
+- Smooth **animations** for modals and page transitions  
+- **Dark theme** with modern UI  
+- **Mobile-friendly hamburger menu**  
+- Responsive layout for desktop & mobile
+
+---
+
+## 🔹 Tech Stack
+
+**Frontend:**
+- Next.js (App Router)
+- React
+- Tailwind CSS
+- Vercel deployment
+
+**Backend:**
+- Node.js + Express
+- MongoDB (Atlas or local)
+- JWT authentication
+- Nodemailer for email OTPs
+- Render deployment
+
+---
+
+## 🔹 Demo
+
+- Frontend deployed on **Vercel**: `[Your Vercel Frontend URL]`
+- Backend deployed on **Render**: `https://notes-bookmarks-backend-uzya.onrender.com`
+
+---
+
+## 🔹 Installation
+
+### 1. Backend
+1. Clone backend repo:
+   ```bash
+   git clone https://github.com/krishna3032004/Notes-Bookmarks-backend.git
+   cd notes-bookmarks-backend
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Create a .env file with:
+   ```bash
+   MONGO_URI=your_mongo_connection_string
+   JWT_SECRET=your_jwt_secret
+   EMAIL_USER=your_email@gmail.com
+   EMAIL_PASS=your_email_password_or_app_password
+```
+4. Start server:
+   ```bash
+   npm start
+   ```
+   The backend will run on http://localhost:5000.
+
+### 2. Frontend
+1. Clone frontend repo:
+```bash
+git clone https://github.com/krishna3032004/Notes-Bookmarks-frontend.git
+cd notes-bookmarks-frontend
+```
+2. Install dependencies:
+```bash
+npm install
+```
+3. Create a .env file with:
+```bash
+NEXT_PUBLIC_API_URL=http://localhost:5000/api
+```
+4. Run frontend locally:
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
