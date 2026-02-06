@@ -128,8 +128,10 @@ export async function createBookmark(bookmark) {
     headers: getAuthHeaders(),
     body: JSON.stringify(bookmark),
   });
+  // console.log(res);
+    const data = await res.json();
 
-  if (!res.ok) throw new Error("Failed to create bookmark");
+  if (!res.ok) throw new Error(data.message || "Failed to create bookmark");
   return res.json();
 }
 
@@ -140,8 +142,9 @@ export async function updateBookmark(id, bookmark) {
     headers: getAuthHeaders(),
     body: JSON.stringify(bookmark),
   });
+   const data = await res.json();
 
-  if (!res.ok) throw new Error("Failed to update bookmark");
+  if (!res.ok) throw new Error(data.message || "Failed to create bookmark");
   return res.json();
 }
 
@@ -159,7 +162,7 @@ export async function deleteBookmark(id) {
 
 
 export async function fetchMetadata(url) {
-  const res = await fetch(`${BASE_URL}/fetch-metadata`, {
+  const res = await fetch(`${BASE_URL}/bookmarks/fetch-metadata`, {
     method: "POST",
     headers: { "Content-Type": "application/json", ...(localStorage.getItem("token") && { Authorization: `Bearer ${localStorage.getItem("token")}` }) },
     body: JSON.stringify({ url }),

@@ -86,27 +86,28 @@ export default function Bookmarks() {
                 typeof form.tags === "string"
                     ? form.tags.split(",").map((t) => t.trim())
                     : form.tags;
-            
-    let bookmarkData = { ...form, tags };
 
-    // ✅ Auto-fetch metadata if title or description is empty
-    if (!form.title || !form.description) {
-      try {
-        const meta = await fetchMetadata(form.url);
-        if (!form.title) bookmarkData.title = meta.title || form.url;
-        if (!form.description) bookmarkData.description = meta.description || "";
-      } catch (err) {
-        console.warn("Failed to fetch metadata:", err.message);
-        if (!form.title) bookmarkData.title = form.url; // fallback
-        if (!form.description) bookmarkData.description = "";
-      }
-    }
+            let bookmarkData = { ...form, tags };
 
-    if (editingBookmark) {
-      await updateBookmark(editingBookmark._id, bookmarkData);
-    } else {
-      await createBookmark(bookmarkData);
-    }
+            // ✅ Auto-fetch metadata if title or description is empty
+            if (!form.title || !form.description) {
+                try {
+                    const meta = await fetchMetadata(form.url);
+                    // console.log(meta)
+                    if (!form.title) bookmarkData.title = meta.title || form.url;
+                    if (!form.description) bookmarkData.description = meta.description || "";
+                } catch (err) {
+                    console.warn("Failed to fetch metadata:", err.message);
+                    if (!form.title) bookmarkData.title = form.url; // fallback
+                    if (!form.description) bookmarkData.description = "";
+                }
+            }
+
+            if (editingBookmark) {
+                await updateBookmark(editingBookmark._id, bookmarkData);
+            } else {
+                await createBookmark(bookmarkData);
+            }
             setShowModal(false);
             loadBookmarks(search, page);
         } catch (err) {
